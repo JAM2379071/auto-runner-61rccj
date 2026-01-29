@@ -1,0 +1,16 @@
+name: AutoVM
+on: workflow_dispatch
+
+jobs:
+  runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install and Start SSHX
+        run: |
+          echo "STARTING_SSHX_INSTALL"
+          curl -sSf https://sshx.io/get | sh
+          echo "SSHX_INSTALLED"
+          
+          # Run sshx. It blocks the step, printing the URL to logs.
+          # This acts as the 'Keep Alive'.
+          sshx
